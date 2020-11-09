@@ -3,6 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -34,7 +35,26 @@ module.exports = {
           // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'less-loader'
+          'less-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    'autoprefixer'
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75, // 1rem = 75px
+              remPrecision: 8 // 小数点位数
+            }
+          }
         ]
       },
       {
@@ -93,6 +113,7 @@ module.exports = {
         minifyJS: true,
         removeComments: false
       }
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 }
