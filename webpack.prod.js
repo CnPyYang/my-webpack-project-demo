@@ -121,20 +121,20 @@ module.exports = {
       cssProcessor: require('cssnano')
     }),
     new CleanWebpackPlugin(),
-    // new HtmlWebpackExternalsPlugin({
-    //   externals: [
-    //     {
-    //       module: 'react',
-    //       entry: 'https://unpkg.com/react@17/umd/react.production.min.js',
-    //       global: 'React'
-    //     },
-    //     {
-    //       module: 'react-dom',
-    //       entry: 'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js',
-    //       global: 'ReactDOM'
-    //     }
-    //   ],
-    // })
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'react',
+          entry: 'https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js',
+          global: 'React'
+        },
+        {
+          module: 'react-dom',
+          entry: 'https://cdn.bootcdn.net/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js',
+          global: 'ReactDOM'
+        }
+      ],
+    })
   ].concat(htmlWebpackPlugins),
   // optimization: {
   //   splitChunks: {
