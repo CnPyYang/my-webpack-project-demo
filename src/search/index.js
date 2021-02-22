@@ -4,6 +4,7 @@ import './search.less'
 import '../../common'
 import { a } from './tree-shaking'
 
+// eslint-disable-next-line no-unused-vars
 class Search extends React.Component {
   constructor () {
     super ();
